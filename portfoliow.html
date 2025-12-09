@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naveen B | Web Developer Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0f172a;
+      --card: #020617;
+      --accent: #1d4ed8;
+      --accent-soft: rgba(37, 99, 235, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --shadow-card: 0 16px 35px rgba(15, 23, 42, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #0b1120 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.3));
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8 55%, #0b1120 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #e5e7eb;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+    }
+
+    .nav-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+
+    .nav-subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: -4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, #38bdf8, #6366f1);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    #hero {
+      padding: 3.5rem 0 2.5rem;
+      display: grid;
+      grid-template-columns: 2.1fr 1.6fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(37, 99, 235, 0.7);
+      box-shadow: 0 0 22px rgba(37, 99, 235, 0.4);
+      font-size: 0.7rem;
+      color: #bfdbfe;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease,
+        border-color 0.2s ease, color 0.2s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #e5e7eb;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(37, 99, 235, 0.8);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.85);
+      border-color: rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(96, 165, 250, 0.85);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow: 0 10px 28px rgba(30, 64, 175, 0.7);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item span {
+      display: block;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 55%),
+        radial-gradient(circle at bottom, rgba(37, 99, 235, 0.22), transparent 60%),
+        var(--card);
+      border-radius: 28px;
+      padding: 1.8rem 1.6rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.2), transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-role {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #cbd5f5;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 110px;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 14px;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    .stat small {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-tech {
+      font-size: 0.8rem;
+      color: #cbd5f5;
+    }
+
+    .hero-tech-title {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .hero-tech-item {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* Sections */
+    section {
+      padding: 2.5rem 0 0;
+    }
+
+    .section-heading {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* About & Education */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.4fr 1.1fr;
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(15, 118, 110, 0.18), transparent 60%),
+        var(--bg-alt);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .timeline {
+      list-style: none;
+      margin-top: 0.3rem;
+    }
+
+    .timeline li {
+      margin-bottom: 0.7rem;
+      padding-left: 0.9rem;
+      border-left: 1.5px dashed rgba(75, 85, 99, 0.8);
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #38bdf8;
+      left: -4.5px;
+      top: 0.2rem;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.9);
+    }
+
+    .timeline-title {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+    }
+
+    .chip {
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      color: #e5e7eb;
+    }
+
+    /* Experience & Projects */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .exp-card,
+    .project-card {
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.2rem;
+      border: 1px solid rgba(31, 41, 55, 0.95);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .exp-role,
+    .project-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .exp-org,
+    .project-stack {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .exp-duration {
+      font-size: 0.7rem;
+      color: #a5b4fc;
+      margin-bottom: 0.4rem;
+    }
+
+    .bullet-list {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.28rem;
+      position: relative;
+      padding-left: 0.9rem;
+    }
+
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.15rem;
+      top: -0.05rem;
+      color: #38bdf8;
+      font-size: 0.9rem;
+    }
+
+    .project-tags {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+    }
+
+    .project-tag {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #cbd5f5;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.22), transparent 60%),
+        var(--bg-alt);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .contact-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-details {
+      font-size: 0.8rem;
+    }
+
+    .contact-details div {
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.18rem;
+      font-size: 0.75rem;
+    }
+
+    .form-field label {
+      color: #cbd5f5;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 0.5rem 0.6rem;
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      outline: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.5);
+    }
+
+    .form-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+      padding-bottom: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-links {
+        display: none;
+      }
+
+      .wrapper {
+        padding-inline: 1.1rem;
+      }
+
+      .grid-2,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
+        padding-top: 2.4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.75rem;
+      }
+
+      .hero-card {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .section-heading {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="logo-circle">NB</div>
+        <div>
+          <div class="nav-title">Naveen B</div>
+          <div class="nav-subtitle">Web Developer • MERN & Java</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <!-- Hero -->
+    <section id="hero">
+      <div>
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          Open to Web Developer Roles
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm <span>Naveen</span><br />
+          Web Developer & Problem Solver
+        </h1>
+        <p class="hero-subtitle">
+          I build responsive, user-friendly web applications using the MERN stack, Java,
+          and modern front-end technologies. I enjoy turning complex problems into clean,
+          scalable solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            View My Projects →
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            Contact Me
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span>Location</span>
+            Chennai, India
+          </div>
+          <div class="hero-meta-item">
+            <span>Experience</span>
+            Internship + Freelance + Industry
+          </div>
+          <div class="hero-meta-item">
+            <span>Tech</span>
+            MERN • Java • Web Design
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-label">Profile Snapshot</div>
+          <div class="hero-role">Web Developer & MERN Stack Enthusiast</div>
+
+          <div class="hero-highlight">
+            <span class="pill">MERN Stack</span>
+            <span class="pill">Java</span>
+            <span class="pill">React</span>
+            <span class="pill">Node.js</span>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat">
+              <strong>2+</strong>
+              <small>Major Web Projects</small>
+            </div>
+            <div class="stat">
+              <strong>Real-time</strong>
+              <small>Shipping & Hyperlocal Apps</small>
+            </div>
+          </div>
+
+          <div class="hero-tech">
+            <div class="hero-tech-title">Key Technologies</div>
+            <div class="hero-tech-list">
+              <span class="hero-tech-item">React.js</span>
+              <span class="hero-tech-item">Node.js</span>
+              <span class="hero-tech-item">MongoDB</span>
+              <span class="hero-tech-item">Express.js</span>
+              <span class="hero-tech-item">Java</span>
+              <span class="hero-tech-item">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About & Education -->
+    <section id="about">
+      <h2 class="section-heading">About & Education</h2>
+      <p class="section-subtitle">
+        A quick overview of who I am, how I work, and where I studied.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>About Me</h3>
+          <p>
+            I'm a motivated Web Developer with hands-on experience in MERN stack development,
+            Java-based applications, and front-end design. I enjoy building clean UIs, writing
+            maintainable code, and learning new tools that help ship better products.
+            <br /><br />
+            I've worked on real-time shipping logistics tools, e-commerce platforms,
+            and hyperlocal service apps. I also take on freelance projects, helping
+            businesses and individuals go online with modern, responsive websites.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Education</h3>
+          <ul class="timeline">
+            <li>
+              <div class="timeline-title">
+                Bachelor of Computer Applications (BCA)
+              </div>
+              <div class="timeline-meta">
+                University of Madras &middot; Pursuing
+              </div>
+            </li>
+            <li>
+              <div class="timeline-title">
+                Diploma in Civil Engineering (DCE) &mdash; 70%
+              </div>
+              <div class="timeline-meta">
+                Central Polytechnic College, Tharamani &middot; 2020
+              </div>
+            </li>
+            <li>
+              <div class="timeline-title">
+                SSLC &mdash; 79%
+              </div>
+              <div class="timeline-meta">
+                Saraswathi Vidyalaya Matric Hr. Sec. School &middot; 2015
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-heading">Skills</h2>
+      <p class="section-subtitle">
+        Technologies and tools I use to build modern web applications.
+      </p>
+
+      <div class="skills-grid">
+        <div class="card">
+          <h3>Web Development</h3>
+          <div class="chip-row">
+            <span class="chip">HTML5</span>
+            <span class="chip">CSS3</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">jQuery</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">Responsive Design</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Full Stack & Programming</h3>
+          <div class="chip-row">
+            <span class="chip">React.js</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Express.js</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">Java</span>
+            <span class="chip">SQL</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Tools & Other</h3>
+          <div class="chip-row">
+            <span class="chip">VS Code</span>
+            <span class="chip">Git</span>
+            <span class="chip">AutoCAD</span>
+            <span class="chip">Revit Architecture</span>
+            <span class="chip">MS Office</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Soft Skills</h3>
+          <div class="chip-row">
+            <span class="chip">Problem Solving</span>
+            <span class="chip">Critical Thinking</span>
+            <span class="chip">Team Collaboration</span>
+            <span class="chip">Adaptability</span>
+            <span class="chip">Client Communication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-heading">Experience</h2>
+      <p class="section-subtitle">
+        Roles where I applied my skills in real-world projects.
+      </p>
+
+      <div class="cards-grid">
+        <article class="exp-card">
+          <div class="exp-role">Web Developer Intern</div>
+          <div class="exp-org">Infotact Solution &middot; Bangalore</div>
+          <div class="exp-duration">Oct 2025 &ndash; Dec 2025</div>
+          <ul class="bullet-list">
+            <li>Developed responsive UI components using HTML, CSS, JavaScript, and Bootstrap.</li>
+            <li>Improved layouts, navigation flow, and overall user experience.</li>
+            <li>Tested and debugged front-end features across devices and browsers.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-role">Junior Java Developer</div>
+          <div class="exp-org">Paragon Dynamics Info System &middot; Guindy, Chennai</div>
+          <div class="exp-duration">Apr 2022 &ndash; Sep 2022</div>
+          <ul class="bullet-list">
+            <li>Built full-stack Java applications with HTML, CSS, JavaScript, jQuery, SQL, and Bootstrap.</li>
+            <li>Maintained, debugged, and optimized backend modules and UI components.</li>
+            <li>Contributed to logistics tools like GIVIEN Logistics and MBK Shipping Logistics.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-role">Front-End Developer</div>
+          <div class="exp-org">Roshan Info Tech &middot; Tambaram, Chennai</div>
+          <div class="exp-duration">Oct 2022 &ndash; Dec 2022</div>
+          <ul class="bullet-list">
+            <li>Designed and developed responsive websites using HTML, CSS, Bootstrap, and JavaScript.</li>
+            <li>Created logos, brochures, and visiting cards as part of branding work.</li>
+            <li>Collaborated with clients to deliver clean, business-ready websites.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-role">Web Developer / Designer (Freelance)</div>
+          <div class="exp-org">Remote</div>
+          <div class="exp-duration">Ongoing</div>
+          <ul class="bullet-list">
+            <li>Built custom websites for small businesses and individuals.</li>
+            <li>Delivered modern UIs, basic SEO, and mobile-friendly layouts.</li>
+            <li>Handled end-to-end work: planning, design, development, and deployment.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-role">AI Transcription Specialist (Freelance)</div>
+          <div class="exp-org">IndikaAI</div>
+          <div class="exp-duration">Remote</div>
+          <ul class="bullet-list">
+            <li>Transcribed Tamil and English audio for AI and ML datasets.</li>
+            <li>Maintained high accuracy and met tight delivery deadlines.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-heading">Projects</h2>
+      <p class="section-subtitle">
+        A selection of applications I've worked on recently.
+      </p>
+
+      <div class="cards-grid">
+        <article class="project-card">
+          <div class="project-title">E-Commerce Website</div>
+          <div class="project-stack">Node.js, React.js, MongoDB, Express, HTML, CSS, JavaScript, Bootstrap</div>
+          <ul class="bullet-list">
+            <li>Built a full-stack e-commerce app with product listings, shopping cart, and order system.</li>
+            <li>Implemented JWT-based user authentication and secure password handling.</li>
+            <li>Developed reusable React components and integrated REST APIs for product and user operations.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">Full Stack</span>
+            <span class="project-tag">JWT Auth</span>
+            <span class="project-tag">REST APIs</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">Hyperlocal Service Application</div>
+          <div class="project-stack">MongoDB, Express.js, React.js, Node.js (MERN)</div>
+          <ul class="bullet-list">
+            <li>Created a hyperlocal service platform where users can book services in their area.</li>
+            <li>Implemented provider onboarding, booking flow, and role-based access control.</li>
+            <li>Used location-based filtering to match users with relevant service providers.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">MERN Stack</span>
+            <span class="project-tag">Role-Based Access</span>
+            <span class="project-tag">Location Based</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">Live Shipping Projects</div>
+          <div class="project-stack">Java, HTML, CSS, JavaScript, jQuery, SQL, Bootstrap</div>
+          <ul class="bullet-list">
+            <li>Contributed to GIVIEN Logistics and MBK Shipping Logistics platforms.</li>
+            <li>Updated modules, improved UI layouts, and resolved performance issues.</li>
+            <li>Maintained database records and supported backend integrations.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">Logistics</span>
+            <span class="project-tag">Real World</span>
+            <span class="project-tag">Java</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-title">Freelance Business Websites</div>
+          <div class="project-stack">HTML, CSS, JavaScript, Bootstrap, React</div>
+          <ul class="bullet-list">
+            <li>Designed and developed static and dynamic websites for small businesses.</li>
+            <li>Focused on clean UI, simple navigation, and mobile responsiveness.</li>
+          </ul>
+          <div class="project-tags">
+            <span class="project-tag">Freelance</span>
+            <span class="project-tag">Client Work</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-heading">Contact</h2>
+      <p class="section-subtitle">
+        Interested in working together or have a question? Reach out.
+      </p>
+
+      <div class="contact-card">
+        <div>
+          <h3>Let's Build Something</h3>
+          <p>
+            I'm open to internships, full-time opportunities, and freelance projects
+            in web development. Whether it's a new product, an existing app, or a
+            landing page, I'd love to help.
+          </p>
+          <div class="contact-details">
+            <div><strong>Email:</strong> naveenbaskar27@gmail.com</div>
+            <div><strong>Phone:</strong> +91 89037 79720</div>
+            <div><strong>Location:</strong> Chennai, India</div>
+          </div>
+        </div>
+
+        <form
+          class="contact-form"
+          action="mailto:naveenbaskar27@gmail.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input id="name" name="Name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="Email" type="email" placeholder="Your email" required />
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="Message" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content:center; margin-top:0.3rem;">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Naveen B &middot; Web Developer
+    </footer>
+  </main>
+
+  <script>
+    // Dynamic year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
